@@ -1,0 +1,27 @@
+name: my_first_pipeline
+on:
+  pull_request:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - master
+
+jobs:
+  TestOnPR: # Identifier name
+    name: "MY PR" #Optional
+    runs-on: ubuntu-latest
+    container:
+      image: registry.aws.cloud.mov.ai/qa/ros-buildtools-noetic:v1.1.10
+      options: --user root
+      credentials:
+        username: DYLUBOe8
+        password: VKMUV5333bMk2qDamh9cv-Qfut-ZoiUZsMqmuRNGceKp
+    steps:
+      - name: "first step"
+        uses: actions/checkout@v4 
+      - name: "Custom Step"
+        run: |
+          cd Folder
+          mkdir build
+          cd build
+          cmake ..
+          make
